@@ -8,6 +8,11 @@ class ProductModel {
     this.connection = connection;
   }
 
+  public async getAll(): Promise<Product[]> {
+    const [products] = await this.connection.execute('SELECT * FROM Trybesmith.Products');
+    return products as Product[];
+  }
+
   public async create(product: Product): Promise<Product> {
     const { name, amount } = product;
     const result = await this.connection.execute<ResultSetHeader>(
