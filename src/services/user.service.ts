@@ -21,7 +21,7 @@ class UserService {
       algorithm: 'HS256',
     };
 
-    const token = jwt.sign({ data: newUser.username }, process.env.JWT_SECRET!, jwtConfig);
+    const token = jwt.sign({ data: newUser.username }, 'JWT_SECRET', jwtConfig);
 
     return { token };
   }
